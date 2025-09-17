@@ -1,0 +1,54 @@
+{
+  "name": "json-to-compact",
+  "version": "1.0.0",
+  "description": "A compact JSON serializer/deserializer with token savings and bidirectional conversion",
+  "main": "src/jsonToCompact.ts",
+  "types": "src/jsonToCompact.d.ts",
+  "scripts": {
+    "test": "node test/jsonToCompact.test.js",
+    "build": "rm -rf dist && tsc && terser dist/jsonToCompact.js -o dist/jsonToCompact.min.js --compress --mangle && echo 'Build completed successfully'",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf dist/ node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "24.5.1",
+    "terser": "^5.31.6",
+    "typescript": "5.9.2"
+  },
+  "keywords": [
+    "json",
+    "serializer",
+    "deserializer",
+    "compact",
+    "token-savings",
+    "parser",
+    "compression",
+    "bidirectional"
+  ],
+  "author": "Florian Schäfer <florian.schaefer@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fschaefer/json-to-compact"
+  },
+  "bugs": {
+    "url": "https://github.com/fschaefer/json-to-compact/issues"
+  },
+  "homepage": "https://github.com/fschaefer/json-to-compact#readme",
+  "files": [
+    "src/",
+    "dist/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/jsonToCompact.d.ts",
+      "import": "./src/jsonToCompact.ts",
+      "require": "./src/jsonToCompact.ts"
+    },
+    "./min": "./dist/jsonToCompact.min.js"
+  }
+}
