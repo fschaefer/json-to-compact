@@ -89,6 +89,8 @@ Parses a compact string format back to JavaScript object.
 
 The Compact Format is a space-optimized serialization format designed for token-efficient JSON transmission. It follows these transformation rules:
 
+**Important:** Unquoted strings with spaces are treated as single tokens until the next separator (space after value, or structure delimiter).
+
 - **Objects**: `{key1 value1 key2 value2 ...}` - Keys and values separated by spaces, no colons or commas
 - **Arrays**: `[item1 item2 item3 ...]` - Elements separated by spaces, no commas
 - **Strings**:
@@ -113,8 +115,10 @@ Original JSON:
 
 Compact Format:
 ```
-{name John Doe age 30 active true tags[dev ai] special "Hello \"world\"!"}
+{name "John Doe" age 30 active true tags[dev ai] special "Hello \"world\"!"}
 ```
+
+**Note:** In this example, "John Doe" is quoted because it contains a space. Unquoted strings cannot contain spaces; they end at the next space or delimiter.
 
 This format reduces token count while maintaining full parseability back to the original structure.
 ## Development
